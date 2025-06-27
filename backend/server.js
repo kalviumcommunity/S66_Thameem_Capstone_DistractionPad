@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+console.log(new mongoose.Types.ObjectId()); 
+
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://bloguser:BLOgu3r@tamim.nlmyb.mongodb.net/distraction-pad?retryWrites=true&w=majority&appName=tamim', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -11,6 +13,10 @@ mongoose.connect('mongodb+srv://bloguser:BLOgu3r@tamim.nlmyb.mongodb.net/distrac
 const Note = require('./models/notes');
 const Task = require('./models/tasks');
 const Event = require('./models/events');
+
+app.use('/api/notes', require('./routes/notes')(Note));
+app.use('/api/tasks', require('./routes/tasks')(Task));
+app.use('/api/events', require('./routes/events')(Event));
 
 app.get('/api/notes', async (req, res) => {
   try {
@@ -38,6 +44,7 @@ app.get('/api/events', async (req, res) => {
     res.status(500).json({ message: 'Error fetching events', error });
   }
 });
+
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
