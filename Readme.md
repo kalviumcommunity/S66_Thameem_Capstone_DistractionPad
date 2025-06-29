@@ -1,3 +1,6 @@
+deployed link : https://s66-thameem-capstone-distractionpad.onrender.com
+
+
 # 15-Day Plan to Build "Distraction Pad" Website
 
 ## Week 1: Setup, Backend, and Core Features
@@ -77,3 +80,4 @@ Day 15: Final Testing and Documentation
 Test the live site for all features (sign-in, notes, calendar, timer, settings).
 Write a README with setup and usage instructions.
 Submit the project.
+
