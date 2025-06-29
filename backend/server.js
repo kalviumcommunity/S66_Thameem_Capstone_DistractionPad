@@ -12,6 +12,10 @@ const Note = require('./models/notes');
 const Task = require('./models/tasks');
 const Event = require('./models/events');
 
+app.use('/api/notes', require('./routes/notes')(Note));
+app.use('/api/tasks', require('./routes/tasks')(Task));
+app.use('/api/events', require('./routes/events')(Event));
+
 app.get('/api/notes', async (req, res) => {
   try {
     const notes = await Note.find();
@@ -38,6 +42,7 @@ app.get('/api/events', async (req, res) => {
     res.status(500).json({ message: 'Error fetching events', error });
   }
 });
+
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
