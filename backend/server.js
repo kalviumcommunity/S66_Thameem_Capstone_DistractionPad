@@ -2,8 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
-console.log(new mongoose.Types.ObjectId()); 
-
 app.use(express.json());
 
 mongoose.connect('mongodb+srv://bloguser:BLOgu3r@tamim.nlmyb.mongodb.net/distraction-pad?retryWrites=true&w=majority&appName=tamim', { useNewUrlParser: true, useUnifiedTopology: true })

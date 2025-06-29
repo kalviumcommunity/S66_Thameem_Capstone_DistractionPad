@@ -22,5 +22,17 @@ module.exports = (Note) => {
     }
   });
 
+  router.put('/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { content } = req.body;
+      const note = await Note.findByIdAndUpdate(id, { content }, { new: true, runValidators: true });
+      if (!note) return res.status(404).json({ message: 'Note not found' });
+      res.json(note);
+    } catch (error) {
+      res.status(500).json({ message: 'Error updating note', error });
+    }
+  });
+
   return router;
 };
