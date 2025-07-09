@@ -15,6 +15,7 @@ const Event = require('./models/events');
 app.use('/api/notes', require('./routes/notes')(Note));
 app.use('/api/tasks', require('./routes/tasks')(Task));
 app.use('/api/events', require('./routes/events')(Event));
+app.use('/api/users', require('./routes/users'));
 
 app.get('/api/notes', async (req, res) => {
   try {
