@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (Task) => {
-  router.get('/', async (req, res) => {
-    try {
-      const tasks = await Task.find();
-      res.json(tasks);
-    } catch (error) {
-      res.status(500).json({ message: 'Error fetching tasks', error });
-    }
-  });
+router.get('/user/:userId', async (req, res) => {
+  try {
+    const tasks = await Task.find({ userId: req.params.userId }).populate('userId');
+    res.json(tasks);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
   router.post('/', async (req, res) => {
     try {
